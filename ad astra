@@ -1,1 +1,61 @@
+// modified from this https://editor.p5js.org/cassie/sketches/9sRtfT9r4
+
+function setup() {
+  // canvas, text, and shape context
+  createCanvas(1000, 1000);
+  background(0);
+  rectMode(CENTER);
+  fill(0, 0, 0, 0)
+  textAlign(CENTER, CENTER)
+}
+
+function draw() {
+  // spirograph setup
+  translate(width/2, height/2);
+  const rotation = map(mouseY, 0, height, 0, PI);
+  push()
+  rotate(rotation);
+  const radius = abs(width/2 - mouseX);
+
+  // first rect
+  strokeWeight(1)
+  stroke(178, 255, 214)
+  rect(0, 0, radius*.75, radius*.75);
+  
+  //second rect
+  strokeWeight(1)
+  stroke(146, 151, 196)
+  rect(0, 0, radius*1, radius*1)
+  
+  //third
+  stroke(249, 77, 135)
+  rect(0, 0, radius*2, radius*2)
+  
+  //fourth
+  stroke(147, 104, 183)
+  rect(0, 0, radius*2.5, radius*2.5)
+  
+  //fifth
+  stroke(170, 62, 152)
+  rect(0, 0, radius*3, radius*3)
+  
+  //sixth
+  stroke(251, 164, 132)
+  rect(0, 0, radius*3.5, radius*3.5)
+  pop()
+  
+  // quote
+  textSize(50)
+  strokeWeight(2.5)
+  stroke(255)
+  text('AD ASTRA', 0, 0)
+}
+
+// background reset
+function mouseClicked() {
+  background(0)
+
+}
+  
+
 
