@@ -1,0 +1,85 @@
+let sun;
+let moon;
+let t;
+
+function preload() {
+  sun = loadImage('sun.png');
+}
+
+function setup() {
+  createCanvas(600, 600);
+}
+
+let dayColors = [
+  "#EF476F",
+  "#ffd166",
+  "#06d6a0",
+  "#118ab2",
+  "#073b4c",
+  ];
+
+let eveningColors = [
+  "#03045E",
+  "#023E8A",
+  "#0077B6",
+  "#0096C7",
+  "#00B4D8",
+  "#48CAE4",
+]
+
+function draw() {
+
+  //instructions
+  t = millis();
+  if (t < 2000) {
+    strokeWeight(.5)
+    stroke(255)
+    fill(0)
+    textAlign(CENTER)
+    text("click the clock center to start your time", 300, 300);
+  }
+  
+  //clock center
+  noFill()
+  stroke(0);
+  strokeWeight(5);
+  ellipse(15, 300, 15);
+  
+  //clock face
+  noFill()
+  stroke(255)
+  strokeWeight(1)
+  ellipse(15, 300, 1000)
+  
+  //sun image
+  if (t < 15000) {
+    image(sun, 500, 10);
+  }
+  
+  //time's arrow
+  strokeWeight(1)
+  if (mouseIsPressed){
+    timesArrow()
+  }
+}
+
+//times arrow set up
+function timesArrow() {
+  // random coloration that changes from day to night
+  if (t < 15000) {
+    stroke(random(dayColors))
+  } else {
+      stroke(random(eveningColors));
+  }
+  
+  // iterating Beziers
+  noFill()
+  if (mouseIsPressed) {
+    for (let i = 0; i < 10; i++)
+      bezier(mouseX, mouseY, 0, 300, 0, 300, random(0, 800), random(0, 800))
+  }
+}
+
+
+
+
